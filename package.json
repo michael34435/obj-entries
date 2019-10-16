@@ -1,0 +1,32 @@
+{
+  "name": "obj-entries",
+  "version": "1.0.0",
+  "description": "Object.entries and Object.fromEntries deep version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael34435/obj-entries.git"
+  },
+  "keywords": [
+    "object.entries"
+  ],
+  "author": "michael34435@capslock.tw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michael34435/obj-entries/issues"
+  },
+  "homepage": "https://github.com/michael34435/obj-entries#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-import-resolver-node": "^0.3.2",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "dependencies": {
+    "object.entries": "^1.1.0",
+    "object.fromentries": "^2.0.1"
+  }
+}
