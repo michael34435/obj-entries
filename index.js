@@ -1,40 +1,40 @@
-const entries = require('object.entries');
-const fromEntries = require('object.fromentries');
+const _ = require('lodash');
 
-module.exports = {
-  entries(obj) {
-    return entries(obj)
-      .map((entry) => entry
-        .map((value) => {
-          if (value.constructor.name === 'Object') {
-            return this.entries(value);
-          }
+const entries = obj => _
+  .toPairs(obj)
+  .map(entry => entry
+    .map((value) => {
+      if (value.constructor.name === 'Object') {
+        return entries(value);
+      }
 
-          return value;
-        }));
-  },
+      return value;
+    }));
 
-  fromEntries(array) {
-    const obj = fromEntries(array);
+const fromEntries = (array) => {
+  const obj = _.fromPairs(array);
 
-    return Object.keys(obj)
-      .reduce(
-        (entry, key) => {
-          const value = obj[key];
-
-          if (Array.isArray(value) && value.every(Array.isArray)) {
-            return {
-              ...entry,
-              [key]: this.fromEntries(value),
-            };
-          }
-
+  return Object.keys(obj)
+    .reduce(
+      (entry, key) => {
+        const value = obj[key];
+        if (_.isArray(value) && _.every(value, _.isArray)) {
           return {
             ...entry,
-            [key]: value,
+            [key]: fromEntries(value),
           };
-        },
-        {},
-      );
-  },
+        }
+
+        return {
+          ...entry,
+          [key]: value,
+        };
+      },
+      {},
+    );
+};
+
+module.exports = {
+  entries,
+  fromEntries,
 };
